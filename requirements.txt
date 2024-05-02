@@ -1,4 +1,3 @@
 flask
-request
 jsonify
 google-generativeai
