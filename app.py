@@ -3,7 +3,7 @@ import google.generativeai as genai
 GOOGLE_API_KEY='AIzaSyBV6WygToEtDgr1GDCNdHOnCUP18AXeO7A'
 genai.configure(api_key=GOOGLE_API_KEY)
 model = genai.GenerativeModel('gemini-pro')
-
+port=5000
 # App initialization
 
 app = Flask(__name__)
@@ -56,4 +56,4 @@ def process_string():
 def Hello():
     print("Hello World")
 if __name__ == '__main__':
-    app.run(port=1500,debug=True)
+    app.run(port,debug=True)
