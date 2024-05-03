@@ -48,14 +48,14 @@ def process_string():
     })
 
     # Extract user state and crop name (modify based on your input format)
-    user_state, crop_name = input_string.split("and")  # Assuming format "state and crop_name"
-    user_state = user_state.strip()
-    crop_name = crop_name.strip()
+    # user_state, crop_name = input_string.split("and")  # Assuming format "state and crop_name"
+    # user_state = user_state.strip()
+    # crop_name = crop_name.strip()
 
     # Update messages list with extracted user info (final user query)
     messages.append({
         'role': 'user',
-        'parts': ["I'm from " + user_state + " and I'm interested in growing " + crop_name + "."]
+        'parts': [input_string]
     })
 
     response = model.generate_content(messages)
