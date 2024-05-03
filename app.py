@@ -45,12 +45,6 @@ def process_string():
     })
     response = model.generate_content(messages)
     print(response)
-    messages.append({
-            'role':'model',
-            'parts':[response.text]
-        })
-    # Respond with the processed string
-    # response = {'processed_string': processed_string}
     return response.text # bot ka jayega
 @app.route('/',methods=['POST'])
 def Hello():
