@@ -52,7 +52,7 @@ def process_string():
     # Respond with the processed string
     # response = {'processed_string': processed_string}
     return response.text # bot ka jayega
-@app.route('/',method=['POST])
+@app.route('/',method=['POST'])
 def Hello():
     print("Hello World")
 if __name__ == '__main__':
