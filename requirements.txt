@@ -1,3 +1,4 @@
 flask
 jsonify
 google-generativeai
+gunicorn
