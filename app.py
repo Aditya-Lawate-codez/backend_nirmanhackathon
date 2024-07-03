@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 import google.generativeai as genai
 GOOGLE_API_KEY='AIzaSyBV6WygToEtDgr1GDCNdHOnCUP18AXeO7A'
 genai.configure(api_key=GOOGLE_API_KEY)
-model = genai.GenerativeModel('gemini-pro')
+model = genai.GenerativeModel('gemini-1.5-pro')
 
 # App initialization
 
@@ -57,7 +57,7 @@ messages.append({
 def process_string():
     # Get the string from the request
     data = request.get_json()
-    message= data['input_string']
+    message = data['input_string']
 
     # Process the string (You can replace this with your processing logic)
     # user bolega
