@@ -64,7 +64,7 @@ messages.append({
     })
 
 @app.route('/getres', methods=['POST'])
-def process_string(msg):
+def process_string():
     # Get the string from the request
     data = request.get_json()
     message = data['input_string']
