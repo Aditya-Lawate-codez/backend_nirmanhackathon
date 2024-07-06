@@ -1,9 +1,11 @@
 import json
 import re
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import google.generativeai as genai
 from google.generativeai.types import HarmCategory, HarmBlockThreshold
 app = Flask(__name__)
+CORS(app)
 from pymongo import MongoClient
 import os
 from os.path import join, dirname
