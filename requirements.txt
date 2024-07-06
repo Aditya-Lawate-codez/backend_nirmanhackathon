@@ -1,7 +1,9 @@
 pymongo 
 flask
 jsonify
+flask-cors
+google-cloud-texttospeech 
+google-cloud-speech
 google-generativeai
 python-dotenv
 gunicorn
-flask-cors
