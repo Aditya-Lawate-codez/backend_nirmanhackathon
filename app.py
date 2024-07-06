@@ -79,8 +79,8 @@ def process_string():
     data = request.get_json()
     message = data['input_string']
     messages.append({
-    'role': 'user',
-    'parts': [message]
+        'role': 'user',
+        'parts': [message]
     })
     response = model.generate_content(messages)
     try:
@@ -139,4 +139,4 @@ def recognize_speech():
     return jsonify({'transcript': result_text})
 
 if name == 'main':
-app.run(debug=True)
+    app.run(debug=True)
