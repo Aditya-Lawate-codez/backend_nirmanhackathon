@@ -138,5 +138,5 @@ def recognize_speech():
     result_text = response.results[0].alternatives[0].transcript
     return jsonify({'transcript': result_text})
 
-if name == 'main':
+if __name__ == '__main__':
     app.run(debug=True)
