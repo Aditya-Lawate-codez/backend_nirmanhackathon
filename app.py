@@ -4,22 +4,28 @@ from flask import Flask, request, jsonify
 import google.generativeai as genai
 from google.generativeai.types import HarmCategory, HarmBlockThreshold
 app = Flask(__name__)
-
-GOOGLE_API_KEY='AIzaSyBV6WygToEtDgr1GDCNdHOnCUP18AXeO7A'
-genai.configure(api_key=GOOGLE_API_KEY)
 from pymongo import MongoClient
-uri = "mongodb+srv://adityalawate2004:ljYTFSVUS1ZcZQdh@threads.riq9cuf.mongodb.net/?retryWrites=true&w=majority&appName=Threads"    
+import os
+from os.path import join, dirname
+from dotenv import load_dotenv
 
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+
+# SECRET_KEY = os.environ.get("SECRET_KEY")
+# DATABASE_PASSWORD = os.environ.get("DATABASE_PASSWORD")
+GOOGLE_API_KEY=os.environ.get("GOOGLE_API_KEY")
+genai.configure(api_key=GOOGLE_API_KEY)
+uri = os.environ.get("URI")
 # App initialization
-generation_config = {
-    
+generation_config = {    
   "temperature": 0.3,
   "top_p": 0.95,
   "top_k": 64,
   "max_output_tokens": 8192,
   "response_mime_type": "text/plain",
 }
-model = genai.GenerativeModel('gemini-1.5-pro', generation_config=generation_config, safety_settings={
+model = genai.GenerativeModel('gemini-1.5-flash', generation_config=generation_config, safety_settings={
         HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE,
         HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
         HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT:HarmBlockThreshold.BLOCK_NONE,
@@ -86,16 +92,14 @@ def process_string():
         client = MongoClient(uri)
         database = client["userInformation"]
         collection = database["users"]
-        collection.insert_one(data, )
+        collection.insert_one(data,)
         client.close()
 
     # part= response.text
     messages.append({
             'role':'model',
-            'parts': part,#[response.text or response.candidates[0].content.parts[0].function_response.response]
+            'parts': part,
         })
-    # Respond with the processed string
-    # response = {'processed_string': processed_string}
     print(response.text)
     try:
         return response.text
