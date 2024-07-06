@@ -98,15 +98,15 @@ def process_string():
         collection.insert_one(data)
         client.close()
 
- messages.append({
-     'role': 'model',
-     'parts': part,
- })
- print(response.text)
- try:
-     return jsonify({'response': response.text})
- except Exception:
-     return jsonify({'response': "An error occurred."})
+    messages.append({
+        'role': 'model',
+        'parts': part,
+    })
+    print(response.text)
+    try:
+        return jsonify({'response': response.text})
+    except Exception:
+        return jsonify({'response': "An error occurred."})
 
 @app.route('/synthesize', methods=['POST'])
 def synthesize_text():
